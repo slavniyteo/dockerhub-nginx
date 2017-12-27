@@ -1,0 +1,37 @@
+version: '2'
+services:
+  nginx: 
+    image: slavniyteo/nginx
+    container_name: easy-nginx
+    build: ./
+    ports:
+      - 80:80
+    environment:
+      LOCAL_PAGE_1_NAME: index.html
+      LOCAL_PAGE_1: |
+        <html>
+        <head>
+          <title>My test page.</title>
+        </head>
+        <body>
+          <h1>What do you think I say?</h2>
+          <a>Hello War!</a>
+        </body>
+        </html>
+      LOCAL_PAGE_2_NAME: mama/index.html
+      LOCAL_PAGE_2: |
+        <html>
+        <head>
+          <title>My test page.</title>
+        </head>
+        <body>
+          <h1>What do you think I say?</h2>
+          <a>Hello Mama!</a>
+        </body>
+        </html>
+      LOCAL_CONFIG: |
+        server {
+          listen 80;
+          root /home/nginx/www;
+        }
+
